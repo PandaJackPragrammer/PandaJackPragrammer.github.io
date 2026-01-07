@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[PandaJack&#39;s Blog]的个人博客">
+<meta name="author" content="kveln">
+<title>markdown常用语法汇总 | PandaJack&#39;s Blog</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<!--<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">-->
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="markdown常用语法汇总 | PandaJack&#39;s Blog » Feed"
+  href="https://pandajackpragrammer.github.io/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://pandajackpragrammer.github.io/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4117e886afbc2def0d8ccb966e8a6fb8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta property="og:description" content="markdown常用语法汇总" />
+  <meta property="og:url" content="https://pandajackpragrammer.github.io/post/markdownyufa/" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PandaJack&#39;s Blog" />
+  <!-- <script src="../assets/styles/scripts/tocScript.js"></script> -->
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://pandajackpragrammer.github.io">PandaJack&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1767766681438"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Page Header -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://pandajackpragrammer.github.io">PandaJack&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1767766681438"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://pandajackpragrammer.github.io/media/images/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 没Title为其他页面Header -->
+          
+            <!-- 没Title并且有headerType为Post：文章Header -->
+            <div class="post-heading">
+              <span class="tags">
+                
+              </span>
+              <h1>markdown常用语法汇总</h1>
+              <span class="meta">
+                Posted on
+                2023-04-19，6 min read
+              </span>
+            </div>
+          
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <!-- Post Content -->
+  <article id="post-content-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto post-content-container">
+          
+          <h2 id="1标题">1.标题</h2>
+<p>使用#号标记，可以表示1-6级标题，随#个数递增。如：</p>
+<pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+</code></pre>
+<p>注：最后一个#与文字间一定要有一个空格。<br>
+显示效果如下：</p>
+<h1 id="一级标题">一级标题</h1>
+<h2 id="二级标题">二级标题</h2>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<h5 id="五级标题">五级标题</h5>
+<h6 id="六级标题">六级标题</h6>
+<br/>
+<h2 id="2字体">2.字体</h2>
+<pre><code>*斜体文本*
+_斜体文本_
+**粗体文本**
+__粗体文本__
+***粗斜体文本***
+___粗斜体文本___
+</code></pre>
+<p>把你想修改的字段直接放在中间即可。显示效果如下：<br>
+<em>斜体文本</em><br>
+<em>斜体文本</em><br>
+<strong>粗体文本</strong><br>
+<strong>粗体文本</strong><br>
+<em><strong>粗斜体文本</strong></em><br>
+<em><strong>粗斜体文本</strong></em><br>
+<br/></p>
+<h2 id="3换行">3.换行</h2>
+<pre><code>使用&lt;br/&gt;标签
+使用&amp;nbsp;
+</code></pre>
+<br/>
+<h2 id="4-分割线">4、分割线</h2>
+<pre><code>***
+
+* * *
+
+*****
+
+- - -
+
+----------
+</code></pre>
+<p>效果如下：</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<br/>
+## 5、删除线、下划线
+<pre><code>~~删除线~~
+&lt;u&gt;下滑线&lt;/u&gt;
+</code></pre>
+<p><s>删除线</s><br>
+<u>下划线</u><br>
+<br/></p>
+<h2 id="6-插入代码">6、插入代码</h2>
+<p>插入一行代码：</p>
+<pre><code>`我是一行代码；` //英文输入法下，键盘左上角tab键上面那个符号
+</code></pre>
+<p><code>我是一行代码；</code><br>
+插入代码块：</p>
+<pre><code>```紧跟着可以写上用的什么语言，也可以不用写
+我是代码块；
+```结尾跟开头一样
+</code></pre>
+<p> </p>
+<h2 id="7-插入链接所有符号都是英文输入法下的">7、插入链接(所有符号都是英文输入法下的)</h2>
+<pre><code>[链接名称](链接地址)
+或者
+&lt;链接地址&gt;
+</code></pre>
+<p><a href="http://www.pandajack.top">我是PandaJack</a><br>
+<a href="http://www.pandajack.top">http://www.pandajack.top</a></p>
+<h2 id="8-字体颜色">8、字体颜色</h2>
+<pre><code>浅红色文字：&lt;font color=&quot;#dd0000&quot;&gt;浅红色文字：&lt;/font&gt;&lt;br /&gt; 
+深红色文字：&lt;font color=&quot;#660000&quot;&gt;深红色文字&lt;/font&gt;&lt;br /&gt; 
+浅绿色文字：&lt;font color=&quot;#00dd00&quot;&gt;浅绿色文字&lt;/font&gt;&lt;br /&gt; 
+深绿色文字：&lt;font color=&quot;#006600&quot;&gt;深绿色文字&lt;/font&gt;&lt;br /&gt; 
+浅蓝色文字：&lt;font color=&quot;#0000dd&quot;&gt;浅蓝色文字&lt;/font&gt;&lt;br /&gt; 
+深蓝色文字：&lt;font color=&quot;#000066&quot;&gt;深蓝色文字&lt;/font&gt;&lt;br /&gt; 
+浅黄色文字：&lt;font color=&quot;#dddd00&quot;&gt;浅黄色文字&lt;/font&gt;&lt;br /&gt; 
+深黄色文字：&lt;font color=&quot;#666600&quot;&gt;深黄色文字&lt;/font&gt;&lt;br /&gt; 
+浅青色文字：&lt;font color=&quot;#00dddd&quot;&gt;浅青色文字&lt;/font&gt;&lt;br /&gt; 
+深青色文字：&lt;font color=&quot;#006666&quot;&gt;深青色文字&lt;/font&gt;&lt;br /&gt; 
+浅紫色文字：&lt;font color=&quot;#dd00dd&quot;&gt;浅紫色文字&lt;/font&gt;&lt;br /&gt; 
+深紫色文字：&lt;font color=&quot;#660066&quot;&gt;深紫色文字&lt;/font&gt;&lt;br /&gt;
+</code></pre>
+<p>浅红色文字：<font color="#dd0000">浅红色文字：</font><br /><br>
+深红色文字：<font color="#660000">深红色文字</font><br /><br>
+浅绿色文字：<font color="#00dd00">浅绿色文字</font><br /><br>
+深绿色文字：<font color="#006600">深绿色文字</font><br /><br>
+浅蓝色文字：<font color="#0000dd">浅蓝色文字</font><br /><br>
+深蓝色文字：<font color="#000066">深蓝色文字</font><br /><br>
+浅黄色文字：<font color="#dddd00">浅黄色文字</font><br /><br>
+深黄色文字：<font color="#666600">深黄色文字</font><br /><br>
+浅青色文字：<font color="#00dddd">浅青色文字</font><br /><br>
+深青色文字：<font color="#006666">深青色文字</font><br /><br>
+浅紫色文字：<font color="#dd00dd">浅紫色文字</font><br /><br>
+深紫色文字：<font color="#660066">深紫色文字</font><br /></p>
+<h2 id="9-字体">9、字体</h2>
+<pre><code>&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;
+&lt;font face=&quot;宋体&quot;&gt;我是宋体字&lt;/font&gt;
+&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑字&lt;/font&gt;
+&lt;font face=&quot;fantasy&quot;&gt;我是fantasy字&lt;/font&gt;
+&lt;font face=&quot;Helvetica&quot;&gt;我是Helvetica字&lt;/font&gt;
+</code></pre>
+<p><font face="黑体">我是黑体字</font><br>
+<font face="宋体">我是宋体字</font><br>
+<font face="微软雅黑">我是微软雅黑字</font><br>
+<font face="fantasy">我是fantasy字</font><br>
+<font face="Helvetica">我是Helvetica字</font></p>
+<h2 id="10-字体大小">10、字体大小</h2>
+<pre><code>size为1：&lt;font size=&quot;1&quot;&gt;size为1&lt;/font&gt;&lt;br /&gt; 
+size为2：&lt;font size=&quot;2&quot;&gt;size为2&lt;/font&gt;&lt;br /&gt; 
+size为3：&lt;font size=&quot;3&quot;&gt;size为3&lt;/font&gt;&lt;br /&gt; 
+size为4：&lt;font size=&quot;4&quot;&gt;size为4&lt;/font&gt;&lt;br /&gt; 
+size为10：&lt;font size=&quot;10&quot;&gt;size为10&lt;/font&gt;&lt;br /&gt; 
+</code></pre>
+<p>size为1：<font size="1">size为1</font><br /><br>
+size为2：<font size="2">size为2</font><br /><br>
+size为3：<font size="3">size为3</font><br /><br>
+size为4：<font size="4">size为4</font><br /><br>
+size为10：<font size="10">size为10</font><br /></p>
+<h2 id="11-背景色">11、背景色</h2>
+<pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td bgcolor=#FF00FF&gt;背景色的设置是按照十六进制颜色值：#7FFFD4&lt;/td&gt;		&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td bgcolor=#FF83FA&gt;背景色的设置是按照十六进制颜色值：#FF83FA
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td bgcolor=#D1EEEE&gt;背景色的设置是按照十六进制颜色值：#D1EEEE
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td bgcolor=#C0FF3E&gt;背景色的设置是按照十六进制颜色值：#C0FF3E
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td bgcolor=#54FF9F&gt;背景色的设置是按照十六进制颜色值：#54FF9F
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td bgcolor=DarkSeaGreen&gt;这里的背景色是：DarkSeaGreen，此处输入任意想输入的内容
+        &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+
+</code></pre>
+<table>
+    <tr>
+        <td bgcolor=#FF00FF>背景色的设置是按照十六进制颜色值：#7FFFD4</td>		</tr>
+</table>
+<table>
+    <tr>
+        <td bgcolor=#FF83FA>背景色的设置是按照十六进制颜色值：#FF83FA
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td bgcolor=#D1EEEE>背景色的设置是按照十六进制颜色值：#D1EEEE
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td bgcolor=#C0FF3E>背景色的设置是按照十六进制颜色值：#C0FF3E
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td bgcolor=#54FF9F>背景色的设置是按照十六进制颜色值：#54FF9F
+        </td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td bgcolor=DarkSeaGreen>这里的背景色是：DarkSeaGreen，此处输入任意想输入的内容
+        </td>
+    </tr>
+</table>
+
+          <div class="toc-container"><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1%E6%A0%87%E9%A2%98">1.标题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98">一级标题</a>
+<ul>
+<li><a href="#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98">二级标题</a>
+<ul>
+<li><a href="#%E4%B8%89%E7%BA%A7%E6%A0%87%E9%A2%98">三级标题</a>
+<ul>
+<li><a href="#%E5%9B%9B%E7%BA%A7%E6%A0%87%E9%A2%98">四级标题</a>
+<ul>
+<li><a href="#%E4%BA%94%E7%BA%A7%E6%A0%87%E9%A2%98">五级标题</a>
+<ul>
+<li><a href="#%E5%85%AD%E7%BA%A7%E6%A0%87%E9%A2%98">六级标题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2%E5%AD%97%E4%BD%93">2.字体</a></li>
+<li><a href="#3%E6%8D%A2%E8%A1%8C">3.换行</a></li>
+<li><a href="#4-%E5%88%86%E5%89%B2%E7%BA%BF">4、分割线</a></li>
+<li><a href="#6-%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81">6、插入代码</a></li>
+<li><a href="#7-%E6%8F%92%E5%85%A5%E9%93%BE%E6%8E%A5%E6%89%80%E6%9C%89%E7%AC%A6%E5%8F%B7%E9%83%BD%E6%98%AF%E8%8B%B1%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E4%B8%8B%E7%9A%84">7、插入链接(所有符号都是英文输入法下的)</a></li>
+<li><a href="#8-%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2">8、字体颜色</a></li>
+<li><a href="#9-%E5%AD%97%E4%BD%93">9、字体</a></li>
+<li><a href="#10-%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F">10、字体大小</a></li>
+<li><a href="#11-%E8%83%8C%E6%99%AF%E8%89%B2">11、背景色</a></li>
+</ul>
+</li>
+</ul>
+</div>
+		  
+<div class="boxpost">                 
+<img style="vertical-align:middle;" src="\media\images\码.png" width="400" />
+</div>
+
+
+<div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      <a href="http://www.pandajack.top" target="_blank">PandaJack<a>
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pandajackpragrammer.github.io/post/markdownyufa/" target="_blank" title="markdown常用语法汇总">https://pandajackpragrammer.github.io/post/markdownyufa/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+ </div>
+          
+		  
+          <hr />
+          <p class="next-post">下一篇：
+            <a href="https://pandajackpragrammer.github.io/post/apijiekou/">
+              <span class="post-title">
+                免费的API接口&rarr;
+              </span>
+            </a>
+          </p>
+          
+          <div class="comment" style="text-align: center;">
+            
+            <span id="/post/markdownyufa/" class="leancloud_visitors"
+              data-flag-title="markdown常用语法汇总">
+              <em class="post-meta-item-text">阅读量 </em>
+              <i class="leancloud-visitors-count">loading...</i>
+            </span>
+            
+
+            
+            
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'U7UY4xYgoyA3QpDGLjmD6pEp-gzGzoHsz',
+		appKey: 'ITZiLu2htWDLCFqeJK48gbB7',
+		avatar: '',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: true,
+	});
+</script>
+
+            
+          </div>
+        </div>
+      </div>
+  </article>
+  <!-- Footer -->
+  <footer >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://pandajackpragrammer.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+			  
+			  <li class="list-inline-item">
+			     <div class="box">                 
+                    <img src="\media\images\qrcode_for_gh_027b168d3725_258.jpg"  width="80" height="80" />
+					<p class="box">微信公众号</p>
+                 </div>
+			  </li>
+				 
+			  <li class="list-inline-item">
+				 <div class="box">
+                    <a href="http://csdn.pandajack.top" target="_blank">                 
+                    <img src="\media\images\csdn.png"  width="80" height="80" />
+					<p class="box">CSDN博客</p></a>
+                 </div>
+			      
+			  </li> 			  
+          </ul>	  
+          <p class="copyright text-muted">		  
+          <a href="https://beian.miit.gov.cn" class="Themeinfo" target="_blank">皖ICP备20007972号</a> | 
+		  <script type="text/javascript">  
+		         copyright=new Date(); 
+				 update=copyright.getFullYear();
+                 document.write("Copyright@2023-"+ update);  
+		  </script> | 
+		  <a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea & </a><a href="https://github.com/NeedQuiet/Gridea-theme-concise" class="Themeinfo">Concise</a>
+		  <br>
+		  <!-- 网站运行时长代码 -->
+		  网站已运行:
+		  <span id=span_dt_dt style="color: #2F889A;"></span>
+             <script language=javascript>
+                 function show_date_time(){
+                      window.setTimeout("show_date_time()", 1000);
+                      BirthDay=new Date("4/12/2023 11:22:45");
+                      today=new Date();
+                      timeold=(today.getTime()-BirthDay.getTime());
+                      sectimeold=timeold/1000
+                      secondsold=Math.floor(sectimeold);
+                      msPerDay=24*60*60*1000
+                      e_daysold=timeold/msPerDay
+                      daysold=Math.floor(e_daysold);
+                      e_hrsold=(e_daysold-daysold)*24;
+                      hrsold=Math.floor(e_hrsold);
+                      e_minsold=(e_hrsold-hrsold)*60;
+                      minsold=Math.floor((e_hrsold-hrsold)*60);
+                      seconds=Math.floor((e_minsold-minsold)*60);
+                      span_dt_dt.innerHTML='<font style=color:#C40000>'+daysold+'</font> 天 <font style=color:#C40000>'+hrsold+'</font> 时 <font style=color:#C40000>'+minsold+'</font> 分 <font style=color:#C40000>'+seconds+'</font> 秒';
+                 }
+                 show_date_time();
+            </script>
+			<!-- 网站运行时长代码结束 -->
+		  </p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://pandajackpragrammer.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://pandajackpragrammer.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
+  <script src="https://pandajackpragrammer.github.io/media/scripts/tocScript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[PandaJack&#39;s Blog]的个人博客">
+<meta name="author" content="kveln">
+<title>oracle中进行RMAN备份 | PandaJack&#39;s Blog</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<!--<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">-->
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="oracle中进行RMAN备份 | PandaJack&#39;s Blog » Feed"
+  href="https://pandajackpragrammer.github.io/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://pandajackpragrammer.github.io/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4117e886afbc2def0d8ccb966e8a6fb8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta property="og:description" content="oracle中进行RMAN备份" />
+  <meta property="og:url" content="https://pandajackpragrammer.github.io/post/oraclerman-beifen/" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PandaJack&#39;s Blog" />
+  <!-- <script src="../assets/styles/scripts/tocScript.js"></script> -->
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://pandajackpragrammer.github.io">PandaJack&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1767766681438"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Page Header -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://pandajackpragrammer.github.io">PandaJack&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1767766681438"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://pandajackpragrammer.github.io/media/images/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 没Title为其他页面Header -->
+          
+            <!-- 没Title并且有headerType为Post：文章Header -->
+            <div class="post-heading">
+              <span class="tags">
+                
+                <a href="https://pandajackpragrammer.github.io/tag/W-MfevJSO4/" class="tag">大数据</a>
+                
+                <a href="https://pandajackpragrammer.github.io/tag/_Utrs-2vZ/" class="tag">数据库</a>
+                
+              </span>
+              <h1>oracle中进行RMAN备份</h1>
+              <span class="meta">
+                Posted on
+                2025-04-14，7 min read
+              </span>
+            </div>
+          
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <!-- Post Content -->
+  <article id="post-content-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto post-content-container">
+          
+          <p>在生产环境中配置 RMAN（Recovery Manager）备份以确保数据安全，可按以下步骤进行：</p>
+<h3 id="1-环境准备">1. 环境准备</h3>
+<h4 id="检查数据库状态">检查数据库状态</h4>
+<p>确保数据库处于归档模式，因为归档模式允许在数据库运行时进行备份，且支持基于时间点的恢复。可以通过以下 SQL 语句检查和修改归档模式：</p>
+<pre><code class="language-sql">-- 检查归档模式
+ARCHIVE LOG LIST;
+
+-- 如果不是归档模式，将数据库切换到归档模式
+SHUTDOWN IMMEDIATE;
+STARTUP MOUNT;
+ALTER DATABASE ARCHIVELOG;
+ALTER DATABASE OPEN;
+</code></pre>
+<h4 id="配置快速恢复区可选但推荐">配置快速恢复区（可选但推荐）</h4>
+<p>快速恢复区（Fast Recovery Area，FRA）是一个集中管理备份和恢复相关文件的区域，可简化备份和恢复操作。可以通过以下命令配置：</p>
+<pre><code class="language-sql">--创建恢复区目录
+mkdir -p /path/to/fast_recovery_area
+-- 如果权限不足，可以使用以下命令修改权限
+chown -R oracle:oinstall /path/to/fast_recovery_area
+chmod -R 775 /path/to/fast_recovery_area
+-- 设置快速恢复区的位置和大小
+ALTER SYSTEM SET DB_RECOVERY_FILE_DEST = '/path/to/fast_recovery_area' SCOPE = SPFILE;
+ALTER SYSTEM SET DB_RECOVERY_FILE_DEST_SIZE = 10G SCOPE = SPFILE;
+-- 重启数据库使配置生效
+SHUTDOWN IMMEDIATE;
+STARTUP;
+</code></pre>
+<h3 id="2-连接到-rman">2. 连接到 RMAN</h3>
+<p>使用以下命令以具有适当权限的用户身份连接到 RMAN：</p>
+<pre><code class="language-bash">rman target /
+</code></pre>
+<h3 id="3-制定备份策略">3. 制定备份策略</h3>
+<h4 id="全量备份">全量备份</h4>
+<p>全量备份会备份整个数据库，建议定期进行全量备份，例如每周进行一次。在 RMAN 中执行全量备份的命令如下：</p>
+<pre><code class="language-plaintext">BACKUP DATABASE;
+</code></pre>
+<h4 id="增量备份">增量备份</h4>
+<p>增量备份只备份自上次备份以来发生变化的数据块，可以减少备份时间和存储空间。分为差异增量备份和累积增量备份：</p>
+<ul>
+<li><strong>差异增量备份</strong>：备份自上次全量备份或差异增量备份以来所有变化的数据块。例如，每天进行一次差异增量备份：</li>
+</ul>
+<pre><code class="language-plaintext">BACKUP INCREMENTAL LEVEL 1 DATABASE;
+</code></pre>
+<ul>
+<li><strong>累积增量备份</strong>：备份自上次全量备份以来所有变化的数据块。例如，每周进行 6 次累积增量备份：</li>
+</ul>
+<pre><code class="language-plaintext">BACKUP INCREMENTAL LEVEL 1 CUMULATIVE DATABASE;
+</code></pre>
+<h4 id="归档日志备份">归档日志备份</h4>
+<p>为了支持基于时间点的恢复，需要定期备份归档日志。可以每天备份一次归档日志：</p>
+<pre><code class="language-plaintext">BACKUP ARCHIVELOG ALL;
+</code></pre>
+<h3 id="4-自动化备份任务">4. 自动化备份任务</h3>
+<p>使用操作系统的任务调度工具（如 Linux 中的 <code>cron</code>）来自动化 RMAN 备份任务。以下是一个每天凌晨 2 点执行全量备份的 <code>cron</code> 示例：</p>
+<pre><code class="language-plaintext">0 2 * * * rman target / &lt;&lt;EOF
+BACKUP DATABASE;
+BACKUP ARCHIVELOG ALL;
+EOF
+</code></pre>
+<h3 id="5-配置备份保留策略">5. 配置备份保留策略</h3>
+<p>为了控制备份文件的数量和占用的存储空间，需要配置备份保留策略。例如，设置只保留最近 7 天的备份：</p>
+<pre><code class="language-plaintext">CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 7 DAYS;
+</code></pre>
+<h3 id="6-监控和验证备份">6. 监控和验证备份</h3>
+<h4 id="监控备份作业">监控备份作业</h4>
+<p>定期检查 RMAN 备份作业的日志文件，确保备份任务正常完成。可以通过以下命令查看备份作业的详细信息：</p>
+<pre><code class="language-plaintext">LIST BACKUP SUMMARY;
+</code></pre>
+<h4 id="验证备份文件">验证备份文件</h4>
+<p>定期验证备份文件的完整性，确保在需要恢复时能够正常使用。可以使用以下命令验证备份文件：</p>
+<pre><code class="language-plaintext">RESTORE VALIDATE DATABASE;
+</code></pre>
+<h3 id="7-灾难恢复测试">7. 灾难恢复测试</h3>
+<p>定期进行灾难恢复测试，以确保在实际发生灾难时能够顺利恢复数据。可以在测试环境中模拟各种故障场景，使用 RMAN 进行恢复操作，验证恢复流程的正确性。</p>
+<p>通过以上步骤，可以配置一个完善的 RMAN 备份方案，确保生产环境中的数据安全。</p>
+<h3 id="8-以下是一个根据上面配置rman备份方法写一个bash-脚本确保生产环境中的数据安全要求每七天进行一次全量备份每天进行一次增量备份只保留近30天数据">8、以下是一个根据上面配置RMAN备份方法，写一个bash 脚本，确保生产环境中的数据安全，要求每七天进行一次全量备份，每天进行一次增量备份，只保留近30天数据</h3>
+<pre><code class="language-bash">#!/bin/bash
+
+# 定义 RMAN 命令
+RMAN_CMD=&quot;rman target /&quot;
+
+# 获取当前日期
+DATE=$(date +%Y%m%d)
+
+# 获取当前星期几（0 表示周日，1 - 6 表示周一 - 周六）
+DAY_OF_WEEK=$(date +%w)
+
+# 定义备份日志文件
+LOG_FILE=&quot;/path/to/rman_backup_$DATE.log&quot;
+
+# 定义 RMAN 备份脚本
+if [ &quot;$DAY_OF_WEEK&quot; -eq 0 ]; then
+    # 周日进行全量备份
+    RMAN_SCRIPT=&quot;
+    CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 30 DAYS;
+    BACKUP DATABASE PLUS ARCHIVELOG DELETE INPUT;
+    CROSSCHECK BACKUP;
+    DELETE NOPROMPT OBSOLETE;
+    &quot;
+else
+    # 其他时间进行增量备份
+    RMAN_SCRIPT=&quot;
+    CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 30 DAYS;
+    BACKUP INCREMENTAL LEVEL 1 DATABASE PLUS ARCHIVELOG DELETE INPUT;
+    CROSSCHECK BACKUP;
+    DELETE NOPROMPT OBSOLETE;
+    &quot;
+fi
+
+# 执行 RMAN 备份并记录日志
+$RMAN_CMD &lt;&lt;EOF &gt; $LOG_FILE 2&gt;&amp;1
+$RMAN_SCRIPT
+EOF
+
+# 检查备份是否成功
+if [ $? -eq 0 ]; then
+    echo &quot;RMAN 备份成功，日志文件: $LOG_FILE&quot;
+else
+    echo &quot;RMAN 备份失败，日志文件: $LOG_FILE&quot;
+fi
+    
+</code></pre>
+<p>以下是一个满足你需求的 Bash 脚本，用于配置 RMAN 备份，实现每七天进行一次全量备份，每天进行一次增量备份，并且只保留近 30 天的数据。</p>
+<h3 id="使用说明">使用说明</h3>
+<ol>
+<li><strong>脚本配置</strong>：
+<ul>
+<li>要把 <code>/path/to/rman_backup_$DATE.log</code> 替换为实际存储备份日志文件的路径。</li>
+<li>要保证执行脚本的用户具备执行 RMAN 备份的权限，通常为 <code>oracle</code> 用户。</li>
+</ul>
+</li>
+<li><strong>权限设置</strong>：<br>
+给脚本添加执行权限：</li>
+</ol>
+<pre><code class="language-bash">chmod +x rman_backup.sh
+</code></pre>
+<ol start="3">
+<li><strong>定时任务设置</strong>：<br>
+使用 <code>cron</code> 来设置定时任务，让脚本每天定时执行。编辑 <code>cron</code> 表：</li>
+</ol>
+<pre><code class="language-bash">crontab -e
+</code></pre>
+<p>在文件里添加以下内容，让脚本在每天凌晨 2 点执行：</p>
+<pre><code class="language-plaintext">0 2 * * * /path/to/rman_backup.sh
+</code></pre>
+<p>保存并退出编辑器，这样脚本就会每天定时执行备份操作，每七天进行一次全量备份，每天进行一次增量备份，同时只保留近 30 天的数据。</p>
+<h3 id="脚本解释">脚本解释</h3>
+<ul>
+<li><strong>全量备份</strong>：在周日（<code>DAY_OF_WEEK</code> 为 0）执行全量备份，备份整个数据库和归档日志，并删除已备份的归档日志。</li>
+<li><strong>增量备份</strong>：在其他时间执行增量备份（差异增量备份），备份自上次备份以来变化的数据块和归档日志，并删除已备份的归档日志。</li>
+<li><strong>保留策略</strong>：通过 <code>CONFIGURE RETENTION POLICY TO RECOVERY WINDOW OF 30 DAYS</code> 配置保留策略，只保留近 30 天的备份数据。</li>
+<li><strong>清理操作</strong>：使用 <code>CROSSCHECK BACKUP</code> 检查备份文件的有效性，使用 <code>DELETE NOPROMPT OBSOLETE</code> 删除过期的备份文件。</li>
+</ul>
+
+          <div class="toc-container"><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87">1. 环境准备</a>
+<ul>
+<li><a href="#%E6%A3%80%E6%9F%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E7%8A%B6%E6%80%81">检查数据库状态</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%BF%AB%E9%80%9F%E6%81%A2%E5%A4%8D%E5%8C%BA%E5%8F%AF%E9%80%89%E4%BD%86%E6%8E%A8%E8%8D%90">配置快速恢复区（可选但推荐）</a></li>
+</ul>
+</li>
+<li><a href="#2-%E8%BF%9E%E6%8E%A5%E5%88%B0-rman">2. 连接到 RMAN</a></li>
+<li><a href="#3-%E5%88%B6%E5%AE%9A%E5%A4%87%E4%BB%BD%E7%AD%96%E7%95%A5">3. 制定备份策略</a>
+<ul>
+<li><a href="#%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD">全量备份</a></li>
+<li><a href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD">增量备份</a></li>
+<li><a href="#%E5%BD%92%E6%A1%A3%E6%97%A5%E5%BF%97%E5%A4%87%E4%BB%BD">归档日志备份</a></li>
+</ul>
+</li>
+<li><a href="#4-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%A4%87%E4%BB%BD%E4%BB%BB%E5%8A%A1">4. 自动化备份任务</a></li>
+<li><a href="#5-%E9%85%8D%E7%BD%AE%E5%A4%87%E4%BB%BD%E4%BF%9D%E7%95%99%E7%AD%96%E7%95%A5">5. 配置备份保留策略</a></li>
+<li><a href="#6-%E7%9B%91%E6%8E%A7%E5%92%8C%E9%AA%8C%E8%AF%81%E5%A4%87%E4%BB%BD">6. 监控和验证备份</a>
+<ul>
+<li><a href="#%E7%9B%91%E6%8E%A7%E5%A4%87%E4%BB%BD%E4%BD%9C%E4%B8%9A">监控备份作业</a></li>
+<li><a href="#%E9%AA%8C%E8%AF%81%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6">验证备份文件</a></li>
+</ul>
+</li>
+<li><a href="#7-%E7%81%BE%E9%9A%BE%E6%81%A2%E5%A4%8D%E6%B5%8B%E8%AF%95">7. 灾难恢复测试</a></li>
+<li><a href="#8-%E4%BB%A5%E4%B8%8B%E6%98%AF%E4%B8%80%E4%B8%AA%E6%A0%B9%E6%8D%AE%E4%B8%8A%E9%9D%A2%E9%85%8D%E7%BD%AErman%E5%A4%87%E4%BB%BD%E6%96%B9%E6%B3%95%E5%86%99%E4%B8%80%E4%B8%AAbash-%E8%84%9A%E6%9C%AC%E7%A1%AE%E4%BF%9D%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E8%A6%81%E6%B1%82%E6%AF%8F%E4%B8%83%E5%A4%A9%E8%BF%9B%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD%E6%AF%8F%E5%A4%A9%E8%BF%9B%E8%A1%8C%E4%B8%80%E6%AC%A1%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD%E5%8F%AA%E4%BF%9D%E7%95%99%E8%BF%9130%E5%A4%A9%E6%95%B0%E6%8D%AE">8、以下是一个根据上面配置RMAN备份方法，写一个bash 脚本，确保生产环境中的数据安全，要求每七天进行一次全量备份，每天进行一次增量备份，只保留近30天数据</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">使用说明</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E8%A7%A3%E9%87%8A">脚本解释</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+		  
+<div class="boxpost">                 
+<img style="vertical-align:middle;" src="\media\images\码.png" width="400" />
+</div>
+
+
+<div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      <a href="http://www.pandajack.top" target="_blank">PandaJack<a>
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pandajackpragrammer.github.io/post/oraclerman-beifen/" target="_blank" title="oracle中进行RMAN备份">https://pandajackpragrammer.github.io/post/oraclerman-beifen/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+ </div>
+          
+		  
+          <hr />
+          <p class="next-post">下一篇：
+            <a href="https://pandajackpragrammer.github.io/post/shu-ju-ku-bei-fen-jiao-ben/">
+              <span class="post-title">
+                数据库备份脚本&rarr;
+              </span>
+            </a>
+          </p>
+          
+          <div class="comment" style="text-align: center;">
+            
+            <span id="/post/oraclerman-beifen/" class="leancloud_visitors"
+              data-flag-title="oracle中进行RMAN备份">
+              <em class="post-meta-item-text">阅读量 </em>
+              <i class="leancloud-visitors-count">loading...</i>
+            </span>
+            
+
+            
+            
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'U7UY4xYgoyA3QpDGLjmD6pEp-gzGzoHsz',
+		appKey: 'ITZiLu2htWDLCFqeJK48gbB7',
+		avatar: '',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: true,
+	});
+</script>
+
+            
+          </div>
+        </div>
+      </div>
+  </article>
+  <!-- Footer -->
+  <footer >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://pandajackpragrammer.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+			  
+			  <li class="list-inline-item">
+			     <div class="box">                 
+                    <img src="\media\images\qrcode_for_gh_027b168d3725_258.jpg"  width="80" height="80" />
+					<p class="box">微信公众号</p>
+                 </div>
+			  </li>
+				 
+			  <li class="list-inline-item">
+				 <div class="box">
+                    <a href="http://csdn.pandajack.top" target="_blank">                 
+                    <img src="\media\images\csdn.png"  width="80" height="80" />
+					<p class="box">CSDN博客</p></a>
+                 </div>
+			      
+			  </li> 			  
+          </ul>	  
+          <p class="copyright text-muted">		  
+          <a href="https://beian.miit.gov.cn" class="Themeinfo" target="_blank">皖ICP备20007972号</a> | 
+		  <script type="text/javascript">  
+		         copyright=new Date(); 
+				 update=copyright.getFullYear();
+                 document.write("Copyright@2023-"+ update);  
+		  </script> | 
+		  <a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea & </a><a href="https://github.com/NeedQuiet/Gridea-theme-concise" class="Themeinfo">Concise</a>
+		  <br>
+		  <!-- 网站运行时长代码 -->
+		  网站已运行:
+		  <span id=span_dt_dt style="color: #2F889A;"></span>
+             <script language=javascript>
+                 function show_date_time(){
+                      window.setTimeout("show_date_time()", 1000);
+                      BirthDay=new Date("4/12/2023 11:22:45");
+                      today=new Date();
+                      timeold=(today.getTime()-BirthDay.getTime());
+                      sectimeold=timeold/1000
+                      secondsold=Math.floor(sectimeold);
+                      msPerDay=24*60*60*1000
+                      e_daysold=timeold/msPerDay
+                      daysold=Math.floor(e_daysold);
+                      e_hrsold=(e_daysold-daysold)*24;
+                      hrsold=Math.floor(e_hrsold);
+                      e_minsold=(e_hrsold-hrsold)*60;
+                      minsold=Math.floor((e_hrsold-hrsold)*60);
+                      seconds=Math.floor((e_minsold-minsold)*60);
+                      span_dt_dt.innerHTML='<font style=color:#C40000>'+daysold+'</font> 天 <font style=color:#C40000>'+hrsold+'</font> 时 <font style=color:#C40000>'+minsold+'</font> 分 <font style=color:#C40000>'+seconds+'</font> 秒';
+                 }
+                 show_date_time();
+            </script>
+			<!-- 网站运行时长代码结束 -->
+		  </p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://pandajackpragrammer.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://pandajackpragrammer.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
+  <script src="https://pandajackpragrammer.github.io/media/scripts/tocScript.js"></script>
+</body>
+
+</html>
