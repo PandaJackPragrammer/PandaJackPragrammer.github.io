@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="欢迎访问[PandaJack&#39;s Blog]的个人博客">
+<meta name="author" content="kveln">
+<title>国学：小六壬 | PandaJack&#39;s Blog</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+<!--<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">-->
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link
+  href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+  rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="国学：小六壬 | PandaJack&#39;s Blog » Feed"
+  href="https://pandajackpragrammer.github.io/atom.xml">
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="https://pandajackpragrammer.github.io/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/css/live2d.css">
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?4117e886afbc2def0d8ccb966e8a6fb8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  <meta property="og:description" content="CapsWriter-Offline：按住说话就打字，完全离线的语音输入神器" />
+  <meta property="og:url" content="https://pandajackpragrammer.github.io/post/capswriter-deepdive/" />
+  <meta property="og:locale" content="zh-CN" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PandaJack&#39;s Blog" />
+  <!-- <script src="../assets/styles/scripts/tocScript.js"></script> -->
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://pandajackpragrammer.github.io">PandaJack&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1776648876684"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <!-- Page Header -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="https://pandajackpragrammer.github.io">PandaJack&#39;s Blog</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">首页</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/archives">归档</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tags">标签</a>
+          
+        </li>
+        
+        <li class="nav-item">
+          <div class="gridea-search-container">
+            <form id="gridea-search-form" style="position: relative" data-update="1776648876684"
+              action="/search/index.html">
+              <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+              <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="masthead" style="background-image: url('https://pandajackpragrammer.github.io/media/images/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        
+          <!-- 没Title为其他页面Header -->
+          
+            <!-- 没Title并且有headerType为Post：文章Header -->
+            <div class="post-heading">
+              <span class="tags">
+                
+                <a href="https://pandajackpragrammer.github.io/tag/uh-h-Cqdx/" class="tag">国学</a>
+                
+              </span>
+              <h1>CapsWriter-Offline：按住说话就打字，完全离线的语音输入神器</h1>
+              <span class="meta">
+                Posted on
+                2026-06-29，5 min read
+              </span>
+            </div>
+          
+        
+      </div>
+    </div>
+  </div>
+</header>
+  <!-- Post Content -->
+  <article id="post-content-article">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto post-content-container">
+          
+          
+
+
+
+<p>说到语音输入，大家可能第一反应是手机上的输入法语音键、或者各种云端转写服务。但如果你是个<strong>重度文字工作者</strong>，用键盘打字速度跟不上脑子的时候，你就会发现——市面上的语音输入方案，要么<strong>延迟高</strong>、要么<strong>必须联网</strong>、要么<strong>没法自定义</strong>。</p>
+
+<p>今天要聊的这个项目，解决了以上所有痛点。</p>
+
+<h2>CapsWriter-Offline 是什么</h2>
+
+<p>项目地址：https://github.com/HaujetZhao/CapsWriter-Offline</p>
+
+<p>一个<strong>完全离线</strong>的 PC 端语音输入工具。5800+ Stars，MIT 开源协议。</p>
+
+<p>它的操作逻辑极其简洁：</p>
+
+<p>> <strong>按住 CapsLock 键说话，松开就上屏。就这么简单。</strong></p>
+
+<p>不需要点按钮，不需要切窗口，不需要等网络。按→说→松→字出来，一气呵成。</p>
+
+<hr />
+
+<h2>为什么它值得关注</h2>
+
+<h3>完全离线，隐私拉满</h3>
+
+<p>所有语音识别在本地完成，<strong>不需要任何网络连接</strong>。识别引擎有四种可选：</p>
+
+<p>| 引擎 | 准确率 | 延迟(20s音频) | 显存加速 |</p>
+<p>|------|:-----:|:------------:|:-------:|</p>
+<p>| Paraformer | ★★★☆☆ | CPU 0.6s | ❌ |</p>
+<p>| SenseVoice-Small | ★★★☆☆ | CPU 0.6s / GPU 0.15s | ✅ |</p>
+<p>| Fun-ASR-Nano | ★★★★☆ | CPU 2.0s / GPU 0.5s | ✅ |</p>
+<p>| Qwen3-ASR-1.7B | ★★★★★ | CPU 4.0s / GPU 1.0s | ✅ |</p>
+
+<p>最轻量的 Paraformer 和 SenseVoice-Small 在 CPU 上只需要 0.6 秒就能转完 20 秒音频，几乎是<strong>实时</strong>的。如果你有 N 卡，开启 GPU 预加速后延迟可以进一步压到 0.1 秒级别。</p>
+
+<p>这意味着什么？<strong>说的话还没说完，字已经出来了。</strong></p>
+
+<h3>无感输入体验</h3>
+
+<p>CapsWriter 的设计哲学是"如臂使指"——让你感觉不到它存在。</p>
+
+<p>- <strong>默认模式</strong>：按住 CapsLock 说话，松手自动上屏，自动去掉末尾逗句号</p>
+<p>- <strong>对讲机模式</strong>：按住就录，松手就上屏</p>
+<p>- <strong>单机录音模式</strong>：点一下开始录，再点一下结束上屏</p>
+
+<p>配合托盘菜单，可以快速开关、切换模式、添加热词，全程不需要离开当前窗口。</p>
+
+<h3>高度自定义</h3>
+
+<p>这是 CapsWriter 和普通语音输入最大的区别——它的<strong>热词系统</strong>非常强大：</p>
+
+<p>- <strong><code>hot.txt</code></strong>：写下偏僻词（人名、专业术语、英文缩写），通过音素模糊匹配自动替换</p>
+<p>- <strong><code>hot-rule.txt</code></strong>：用正则表达式或简单等号规则做精准替换</p>
+<p>- <strong>自定义短语</strong>：说"我的地址" → 自动展开为完整地址</p>
+
+<p>对于程序员、医生、律师、翻译这些有大量专业术语的人群来说，这个功能直接把语音输入的可用性拉高了一个档次。</p>
+
+<h3>LLM 角色润色</h3>
+
+<p>v2.6 版本开始，内置了 LLM 润色功能。</p>
+
+<p>你可以在识别结果开头用特定词触发角色处理，比如说"润色：今天天气真不错"——结果会先经过 LLM 润色再上屏。目前支持 DeepSeek API，配置好密钥就能用。</p>
+
+<p>虽然需要网络调用 LLM（这不是语音识别的一部分，是额外功能），但你可以选择不用，语音识别本身<strong>全程离线</strong>。</p>
+
+<hr />
+
+<h2>文件转录：丢进去就出字幕</h2>
+
+<p>除了实时语音输入，CapsWriter 还支持<strong>文件转录</strong>。把音频或视频文件拖到客户端窗口上，自动输出：</p>
+
+<p>- <code>.srt</code> 字幕文件</p>
+<p>- <code>.txt</code> 文本文件</p>
+<p>- <code>.json</code> 时间戳文件</p>
+
+<p>做播客笔记、会议录音转文字、视频字幕制作，一条龙搞定。</p>
+
+<hr />
+
+<h2>一些我实际用过后的感受</h2>
+
+<p>说说实际体验。这个项目最打动我的是它的<strong>设计取舍</strong>：</p>
+
+<p>1. <strong>离线优先</strong> — 不给自己留联网的后路，把本地模型优化到能用的水平。这是一种信念感：离线不是妥协，而是设计的出发点。</p>
+
+<p>2. <strong>按→说→松</strong> — 这个交互太直觉了。不需要学习，不需要记忆，甚至不需要看。肌肉记忆一旦形成，打字效率翻倍。</p>
+
+<p>3. <strong>克制</strong> — 它不做图形界面、不做 Mac/Linux 支持（作者明确说只专注于 Windows），反而让它更好用了。功能少而精，一个 U 盘就能带走，插哪用哪。</p>
+
+<p>当然，也有遗憾：</p>
+
+<p>- <strong>仅 Windows</strong>：Mac 和 Linux 用户无缘了（作者推荐了 LazyTyper 和闪电说作为替代）</p>
+<p>- <strong>需要一点动手能力</strong>：下载模型、配置热词、调整参数，不是开箱即用那种直接双击就行的应用</p>
+<p>- <strong>Qwen3-ASR 模型较大</strong>：最高的准确率需要 1.7B 模型，4G 显存起步</p>
+
+<hr />
+
+<h2>适合谁用</h2>
+
+<p>- <strong>作家 / 编辑 / 自媒体</strong> — 码字量大，语音输入能解放双手</p>
+<p>- <strong>程序员</strong> — 写文档、写周报、记笔记，CapsLock 键本来就是日常按的</p>
+<p>- <strong>会议密集人士</strong> — 快速记录想法，事后整理</p>
+<p>- <strong>隐私敏感用户</strong> — 所有数据不出本机</p>
+<p>- <strong>手部不适的用户</strong> — 减少键盘依赖</p>
+
+<hr />
+
+<h2>总结</h2>
+
+<p>CapsWriter-Offline 在 5.8k Stars 的体量下，质量出乎意料地高。它不追求"智能"、"AI 赋能"这些花里胡哨的概念，而是死磕一个点——<strong>让你说话代替打字的体验无限接近零摩擦</strong>。</p>
+
+<p>如果你在 Windows 上工作、打字量大、又在意隐私，这可能是目前最优的离线语音输入方案，没有之一。</p>
+
+<hr />
+
+<p><em>项目地址：https://github.com/HaujetZhao/CapsWriter-Offline</em></p>
+
+<div class="toc-container"></div>
+		  
+<div class="boxpost">                 
+<img style="vertical-align:middle;" src="\media\images\码.png" width="400" />
+</div>
+
+
+<div class="post-footer">
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      <a href="http://www.pandajack.top" target="_blank">PandaJack<a>
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://pandajackpragrammer.github.io/post/xiaoliuren/" target="_blank" title="国学：小六壬">https://pandajackpragrammer.github.io/post/xiaoliuren/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+ </div>
+          
+		  
+          <hr />
+          <p class="next-post">下一篇：
+            <a href="https://pandajackpragrammer.github.io/post/hellowindows/">
+              <span class="post-title">
+                HelloWindows&rarr;
+              </span>
+            </a>
+          </p>
+          
+          <div class="comment" style="text-align: center;">
+            
+            <span id="/post/xiaoliuren/" class="leancloud_visitors"
+              data-flag-title="国学：小六壬">
+              <em class="post-meta-item-text">阅读量 </em>
+              <i class="leancloud-visitors-count">loading...</i>
+            </span>
+            
+
+            
+            
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'U7UY4xYgoyA3QpDGLjmD6pEp-gzGzoHsz',
+		appKey: 'ITZiLu2htWDLCFqeJK48gbB7',
+		avatar: '',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: 'Just Go Go',
+		visitor: true,
+	});
+</script>
+
+            
+          </div>
+        </div>
+      </div>
+  </article>
+  <!-- Footer -->
+  <footer >
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <!-- <li class="list-inline-item">
+              <a href="https://pandajackpragrammer.github.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li> -->
+			  
+			  <li class="list-inline-item">
+			     <div class="box">                 
+                    <img src="\media\images\qrcode_for_gh_027b168d3725_258.jpg"  width="80" height="80" />
+					<p class="box">微信公众号</p>
+                 </div>
+			  </li>
+				 
+			  <li class="list-inline-item">
+				 <div class="box">
+                    <a href="http://csdn.pandajack.top" target="_blank">                 
+                    <img src="\media\images\csdn.png"  width="80" height="80" />
+					<p class="box">CSDN博客</p></a>
+                 </div>
+			      
+			  </li> 			  
+          </ul>	  
+          <p class="copyright text-muted">		  
+          
+		  <script type="text/javascript">  
+		         copyright=new Date(); 
+				 update=copyright.getFullYear();
+                 document.write("Copyright@2023-"+ update);  
+		  </script> | 
+		  <a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea & </a><a href="https://github.com/NeedQuiet/Gridea-theme-concise" class="Themeinfo">Concise</a>
+		  <br>
+		  <!-- 网站运行时长代码 -->
+		  网站已运行:
+		  <span id=span_dt_dt style="color: #2F889A;"></span>
+             <script language=javascript>
+                 function show_date_time(){
+                      window.setTimeout("show_date_time()", 1000);
+                      BirthDay=new Date("4/12/2023 11:22:45");
+                      today=new Date();
+                      timeold=(today.getTime()-BirthDay.getTime());
+                      sectimeold=timeold/1000
+                      secondsold=Math.floor(sectimeold);
+                      msPerDay=24*60*60*1000
+                      e_daysold=timeold/msPerDay
+                      daysold=Math.floor(e_daysold);
+                      e_hrsold=(e_daysold-daysold)*24;
+                      hrsold=Math.floor(e_hrsold);
+                      e_minsold=(e_hrsold-hrsold)*60;
+                      minsold=Math.floor((e_hrsold-hrsold)*60);
+                      seconds=Math.floor((e_minsold-minsold)*60);
+                      span_dt_dt.innerHTML='<font style=color:#C40000>'+daysold+'</font> 天 <font style=color:#C40000>'+hrsold+'</font> 时 <font style=color:#C40000>'+minsold+'</font> 分 <font style=color:#C40000>'+seconds+'</font> 秒';
+                 }
+                 show_date_time();
+            </script>
+			<!-- 网站运行时长代码结束 -->
+		  </p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://pandajackpragrammer.github.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="https://pandajackpragrammer.github.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  
+  <script src="https://pandajackpragrammer.github.io/media/scripts/tocScript.js"></script>
+</body>
+
+</html>
